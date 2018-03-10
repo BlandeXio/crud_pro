@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 
 # local imports
@@ -20,7 +21,7 @@ def create_app(config_name):
     login_manager.login_view = "auth.login"
 
     migrate = Migrate(app, db)
-
+    Bootstrap(app)
     from app import models
     from .admin import admin as admin_blueprint
     app.register_blueprint(admin_blueprint, url_prefix='/admin')
